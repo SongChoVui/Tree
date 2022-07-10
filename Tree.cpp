@@ -8,42 +8,14 @@ NODE* Tree::KhoiTaoNode(int x){
 	return p;
 }
 
-void Tree::ThemNode(int x)
-{
-	if (root == NULL)
-	{
-		NODE* p = KhoiTaoNode(x);
-		root = p; return;
-	}
-	if (x > root->x)//lớn hơn qua phải
-	{
-		if (root->right != NULL)
-		{
-			ThemNode(root->right, x);
-		}
-		else
-		{
-			root->right = KhoiTaoNode(x);
-		}
-	}
-	else
-	{
-		if (x < root->x) // nhỏ hơn qua trái
-		{
-			if (root->left != NULL)
-			{
-				ThemNode(root->left, x);
-			}
-			else
-			{
-				root->left = KhoiTaoNode(x);
-			}
-		}
-	}
-}
 
 void Tree::ThemNode(NODE* p, int x)
 {
+	if (TRoot == NULL)
+	{
+		NODE* p = KhoiTaoNode(x);
+		TRoot = p; return;
+	}
 	if (x > p->x)//lớn hơn qua phải
 	{
 		if (p->right != NULL)
@@ -81,20 +53,6 @@ void Tree::XuatNODELNR(NODE* p)
 	}
 }
 
-void Tree::Xuat()
-{
-	if (root != NULL)
-	{
-		cout << root->x << " ";
-		XuatNODELNR(root->left);
-		XuatNODELNR(root->right);
-	}
-	else
-	{
-		cout << " Empty ";
-	}
-}
-
 void Tree::XepLoaiNode(NODE* p)
 {
 	if (p != NULL)
@@ -119,33 +77,6 @@ void Tree::XepLoaiNode(NODE* p)
 	}
 }
 
-void Tree::XepLoaiNode()
-{
-	if (root != NULL)
-	{
-		if (root->left == NULL && root->right == NULL)
-		{
-			cout << root->x << "(La) ";
-		}
-		else
-		{
-			if (root->left == NULL || root->right == NULL)
-			{
-				cout << root->x << "(1 Con) ";
-			}
-			else
-			{
-				cout << root->x << "(2 Con) ";
-			}
-		}
-		XepLoaiNode(root->left);
-		XepLoaiNode(root->right);
-	}
-	else
-	{
-		cout << " Empty ";
-	}
-}
 
 void Tree::InputFromFile()
 {
@@ -153,9 +84,13 @@ void Tree::InputFromFile()
 	while (!filein.eof())
 	{
 		int x; filein >> x;
-		ThemNode(x);
+		ThemNode(getRoot(),x);
 	}
 	cout << " Xong! ";
+}
+
+NODE* FindMin(NODE* root) {//find min in the right
+	return root;
 }
 
 NODE* Tree::XoaNode(NODE* root, int data)
@@ -185,10 +120,12 @@ NODE* Tree::XoaNode(NODE* root, int data)
 		}
 		else  //case 3: 2 child
 		{
-
+			NODE* temp = FindMin(root->right);
+			root->x = temp->x;
+			root->right = XoaNode(root->right,temp->x);
 		}
-		return root;
 	}
+	return root;
 }
 
 

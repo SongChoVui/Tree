@@ -28,12 +28,42 @@ void Menu() {
 			break;
 		}
 		case 2: {
-			tree->Xuat();
+			if (tree->getRoot()==NULL)
+			{
+				cout << " Cay dang rong! ";
+			}
+			else
+			{
+				tree->XuatNODELNR(tree->getRoot());
+			}
 			system("pause");
 			break;
 		}
 		case 3: {
-			tree->XepLoaiNode();
+			if (tree->getRoot() == NULL)
+			{
+				cout << " Cay dang rong! ";
+			}
+			else
+			{
+				tree->XepLoaiNode(tree->getRoot());
+			}
+			system("pause");
+			break;
+		}
+		case 4: {
+			if (tree->getRoot() == NULL)
+			{
+				cout << " Cay dang rong! ";
+			}
+			else
+			{
+				int data;
+				cout << "Nhap vao gia tri ma ban muon xoa: ";
+				cin >> data;
+				tree->XoaNode(tree->getRoot(),data);
+				cout << " Xong ";
+			}
 			system("pause");
 			break;
 		}

@@ -10,25 +10,22 @@ typedef struct node {
 class Tree // Binary search tree
 {
 public:
-	Tree() { root = NULL; }
-	Tree(int x) { root = KhoiTaoNode(x); }
+	Tree() { TRoot = NULL; }
+	Tree(int x) { TRoot = KhoiTaoNode(x); }
 
 	NODE* KhoiTaoNode(int x);
 
-	void ThemNode(int x);
 	void ThemNode(NODE* p, int x);
 
 	void XuatNODELNR(NODE* p);
-	void Xuat();
 
 	void XepLoaiNode(NODE* p);
-	void XepLoaiNode(); // xếp loại cho root, còn branch, leaf ở bên trên
 
 	void InputFromFile();
 
 	NODE* XoaNode(NODE* parent,int data);
 
-	NODE* getRoot() { return root; };
+	NODE* getRoot() { return TRoot; };
 private:
-	NODE* root; //node lv0
+	NODE* TRoot; //node lv0
 };
