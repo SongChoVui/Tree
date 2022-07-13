@@ -15,9 +15,10 @@ void Menu() {
 	{
 		system("cls");
 		cout << "\n\t1.Nhap danh sach so nguyen tu file";
-		cout << "\n\t2.In danh sach";
-		cout << "\n\t3.Xep loai node";
-		cout << "\n\t4.Xoa node";
+		cout << "\n\t2.Them node vao Tree";
+		cout << "\n\t3.In danh sach";
+		cout << "\n\t4.Xep loai node";
+		cout << "\n\t5.Xoa node";
 		cout << "\n\t0.Thoat";
 		cout << "\nNhap vao lua chon cua ban: "; cin >> luachon;
 		switch (luachon)
@@ -28,6 +29,22 @@ void Menu() {
 			break;
 		}
 		case 2: {
+			int sl;
+			do
+			{
+				cout << "Nhap vao so luong so nguyen muon them: ";
+				cin >> sl;
+			} while (sl<0);
+			for (size_t i = 0; i < sl; i++)
+			{
+				int x;
+				cout << "Nhap vao gia tri thu " << i + 1 << " ma ban muon them: ";
+				cin >> x;
+				tree->ThemNode(x);
+			}
+			break;
+		}
+		case 3: {
 			if (tree->getRoot()==NULL)
 			{
 				cout << " Cay dang rong! ";
@@ -39,7 +56,7 @@ void Menu() {
 			system("pause");
 			break;
 		}
-		case 3: {
+		case 4: {
 			if (tree->getRoot() == NULL)
 			{
 				cout << " Cay dang rong! ";
@@ -51,7 +68,7 @@ void Menu() {
 			system("pause");
 			break;
 		}
-		case 4: {
+		case 5: {
 			if (tree->getRoot() == NULL)
 			{
 				cout << " Cay dang rong! ";

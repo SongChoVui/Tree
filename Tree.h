@@ -15,7 +15,8 @@ public:
 
 	NODE* KhoiTaoNode(int x);
 
-	void ThemNode(NODE* p, int x);
+	void ThemNode(int x); //với TRoot
+	void ThemNode(NODE* p, int x); // với các node root còn lại	
 
 	void XuatNODELNR(NODE* p); // xuất theo LNR
 	void XuatNODERNL(NODE* p); // xuất theo RNL

@@ -8,14 +8,42 @@ NODE* Tree::KhoiTaoNode(int x){
 	return p;
 }
 
-
-void Tree::ThemNode(NODE* p, int x)
+void Tree::ThemNode(int x)
 {
 	if (TRoot == NULL)
 	{
 		NODE* p = KhoiTaoNode(x);
 		TRoot = p; return;
 	}
+	if (x > TRoot->x)//lớn hơn qua phải
+	{
+		if (TRoot->right != NULL)
+		{
+			ThemNode(TRoot->right, x);
+		}
+		else
+		{
+			TRoot->right = KhoiTaoNode(x);
+		}
+	}
+	else
+	{
+		if (x < TRoot->x) // nhỏ hơn qua trái
+		{
+			if (TRoot->left != NULL)
+			{
+				ThemNode(TRoot->left, x);
+			}
+			else
+			{
+				TRoot->left = KhoiTaoNode(x);
+			}
+		}
+	}
+}
+
+void Tree::ThemNode(NODE* p, int x)
+{
 	if (x > p->x)//lớn hơn qua phải
 	{
 		if (p->right != NULL)
@@ -95,7 +123,7 @@ void Tree::InputFromFile()
 	while (!filein.eof())
 	{
 		int x; filein >> x;
-		ThemNode(getRoot(),x);
+		ThemNode(x);
 	}
 	cout << " Xong! ";
 }
