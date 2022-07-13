@@ -42,6 +42,8 @@ void Menu() {
 				cin >> x;
 				tree->ThemNode(x);
 			}
+			cout << " Done! ";
+			system("pause");
 			break;
 		}
 		case 3: {

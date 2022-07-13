@@ -15,33 +15,8 @@ void Tree::ThemNode(int x)
 		NODE* p = KhoiTaoNode(x);
 		TRoot = p; return;
 	}
-	if (x > TRoot->x)//lớn hơn qua phải
-	{
-		if (TRoot->right != NULL)
-		{
-			ThemNode(TRoot->right, x);
-		}
-		else
-		{
-			TRoot->right = KhoiTaoNode(x);
-		}
-	}
-	else
-	{
-		if (x < TRoot->x) // nhỏ hơn qua trái
-		{
-			if (TRoot->left != NULL)
-			{
-				ThemNode(TRoot->left, x);
-			}
-			else
-			{
-				TRoot->left = KhoiTaoNode(x);
-			}
-		}
-	}
+	ThemNode(TRoot, x);
 }
-
 void Tree::ThemNode(NODE* p, int x)
 {
 	if (x > p->x)//lớn hơn qua phải
@@ -98,17 +73,17 @@ void Tree::XepLoaiNode(NODE* p)
 	{
 		if (p->left == NULL && p->right == NULL)
 		{
-			cout << p->x << "(La) ";
+			cout << "Node la: " << p->x << endl;
 		}
 		else
 		{
 			if (p->left == NULL || p->right == NULL)
 			{
-				cout << p->x << "(1 Con) ";
+				cout <<"Node 1 con: " << p->x << endl;
 			}
 			else
 			{
-				cout << p->x << "(2 Con) ";
+				cout <<"Node 2 con: " << p->x << endl;
 			}
 		}
 		XepLoaiNode(p->left);
