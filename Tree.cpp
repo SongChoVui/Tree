@@ -53,6 +53,17 @@ void Tree::XuatNODELNR(NODE* p)
 	}
 }
 
+void Tree::XuatNODERNL(NODE* p)
+{
+	if (p!=NULL)
+	{
+		XuatNODERNL(p->right);
+		cout << p->x<<" ";
+		XuatNODERNL(p->left);
+	}
+}
+
+
 void Tree::XepLoaiNode(NODE* p)
 {
 	if (p != NULL)

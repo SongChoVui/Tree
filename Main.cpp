@@ -34,7 +34,7 @@ void Menu() {
 			}
 			else
 			{
-				tree->XuatNODELNR(tree->getRoot());
+				tree->XuatNODERNL(tree->getRoot());
 			}
 			system("pause");
 			break;

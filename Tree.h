@@ -17,7 +17,8 @@ public:
 
 	void ThemNode(NODE* p, int x);
 
-	void XuatNODELNR(NODE* p);
+	void XuatNODELNR(NODE* p); // xuất theo LNR
+	void XuatNODERNL(NODE* p); // xuất theo RNL
 
 	void XepLoaiNode(NODE* p);
 
