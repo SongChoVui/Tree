@@ -128,9 +128,18 @@ void Tree::InputFromFile()
 	cout << " Xong! ";
 }
 
-NODE* FindMin(NODE* root) {//find min in the right
-	return root;
+NODE* TimMin(NODE* p) { //tìm giá trị nhỏ nhất bên phải
+	if (p->left==NULL)
+	{
+		return p;
+	}
+	else
+	{
+		TimMin(p->left);
+	}
 }
+//trái cùng cây con phải
+//phải cùng cây con trái
 
 NODE* Tree::XoaNode(NODE* root, int data)
 {
@@ -159,15 +168,15 @@ NODE* Tree::XoaNode(NODE* root, int data)
 		}
 		else  //case 3: 2 child
 		{
-			NODE* temp = FindMin(root->right);
+			NODE* temp = TimMin(root->right);//trái cùng cây con phải
 			root->x = temp->x;
-			root->right = XoaNode(root->right,temp->x);
+			root->right = XoaNode(root->right,temp->x);// lặp lại việc xóa temp
 		}
 	}
 	return root;
 }
 
-
+	
 
 
 
